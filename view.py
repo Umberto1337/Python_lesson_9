@@ -28,3 +28,14 @@ def print_msg(msg: str):
     print('\n' + '=' * len(msg))
     print(msg)
     print('=' * len(msg) + '\n')
+    
+    
+def input_new_contact():
+    new_contact = []
+    for item in text.fields_new_contact:
+        new_contact.append(input(item))
+    return new_contact
+
+
+def input_data(msg: str) -> str:
+    return input(msg)
