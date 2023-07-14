@@ -10,7 +10,8 @@ def start():
                 model.open_file()
                 view.print_msg(text.load_successful)
             case 2:
-                pass
+                model.save_file()
+                view.print_msg(text.save_successful)
             case 3:
                 pb = model.phone_book
                 view.show_contact(pb, text.empty_book)
