@@ -1,5 +1,8 @@
+from copy import deepcopy
+
 phone_book = {}
 path ='phones.txt'
+original_phone_book = {}
 
 def open_file():
     with open(path, 'r', encoding='UTF-8') as file:
@@ -7,7 +10,7 @@ def open_file():
     for contanct in data:
        uid, name, phone, comment = contanct.strip().split(';')
        phone_book[int(uid)] = [name, phone, comment]
-
+    original_phone_book = deepcopy(phone_book)
 
 def save_file():
     with open(path, 'w', encoding='UTF-8') as file:
@@ -32,3 +35,16 @@ def search(word):
                 result[uid] = contact
                 break
     return result
+
+
+def delete_contact(uid: int) -> str:
+    return phone_book.pop(uid)[0]
+
+
+def change_contact(uid: int, rename: list[str]):
+    contact = phone_book.get(uid)
+    for i in range(3):
+        if rename[i]:
+            contact[i] = rename[i]          
+    phone_book[uid] = contact
+    return contact[0]
